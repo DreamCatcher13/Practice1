@@ -8,22 +8,31 @@ public class Fraction {
     private  int numerator;
     private  int denominator;
 
-    public  Fraction (){
-
-    }
-
     public Fraction ( int a ) {
         numerator = a;
         denominator = 1;
     }
 
-    public  Fraction ( int a, int b) {
-        numerator = a;
-        denominator = b;
-        if ( b == 0) {
-            throw  new IllegalArgumentException( " ділення на 0");
+    public Fraction ( ) {
+        numerator = 0;
+        denominator = 1;
+    }
+
+    public Fraction(int numerator, int denominator) {
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Знаменник не може дорівнювати 0");
+        }
+
+        if (denominator > 0) {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        } else {
+            // Нормалізація дробу, якщо знаменник виявився від’ємним
+            this.numerator = -numerator;
+            this.denominator = -denominator;
         }
     }
+
 
     public String toString() {
         return ( numerator + "/" + denominator);
