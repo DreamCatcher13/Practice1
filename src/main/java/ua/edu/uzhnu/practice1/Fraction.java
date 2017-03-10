@@ -27,7 +27,6 @@ public class Fraction {
             this.numerator = numerator;
             this.denominator = denominator;
         } else {
-            // Нормалізація дробу, якщо знаменник виявився від’ємним
             this.numerator = -numerator;
             this.denominator = -denominator;
         }
@@ -43,9 +42,7 @@ public class Fraction {
     }
 
     public boolean isProper() {
-        int a = numerator;
-        int b = denominator;
-        return (a < b);
+        return (Math.abs(numerator)<denominator);
     }
 
 
@@ -69,40 +66,28 @@ public class Fraction {
         Fraction result = new Fraction();
         result.denominator =  a.denominator * b.denominator;
         result.numerator = a.numerator * b.denominator + b.numerator * a.denominator ;
-        int r = gcd ( result.numerator, result.denominator);
-        result.numerator = result.numerator / r;
-        result.denominator = result.denominator / r;
-        return result;
+        return result.simplify();
     }
 
     public static Fraction subtract(Fraction a, Fraction b) {
         Fraction result = new Fraction();
         result.denominator = a.denominator * b.denominator;
         result.numerator = a.numerator * b.denominator - b.numerator * a.denominator;
-        int r = gcd ( Math.abs( result.numerator ), Math.abs(result.denominator));
-        result.numerator = result.numerator / r;
-        result.denominator = result.denominator / r;
-        return result;
+        return result.simplify();
     }
 
     public static Fraction multiply(Fraction a, Fraction b) {
         Fraction result = new Fraction();
         result.numerator = a.numerator * b.numerator;
         result.denominator = a.denominator * b.denominator;
-        int t = gcd ( result.numerator, result.denominator);
-        result.numerator = result.numerator / t;
-        result.denominator = result.denominator / t;
-        return result;
+        return result.simplify();
     }
 
     public static Fraction divide(Fraction a, Fraction b) {
         Fraction result = new Fraction();
         result.numerator = a.numerator * b.denominator;
         result.denominator = a.denominator * b.numerator;
-        int t = gcd ( result.numerator, result.denominator);
-        result.numerator = result.numerator / t;
-        result.denominator = result.denominator / t;
-        return result;
+        return result.simplify();
     }
 
     public int getNumerator() {
@@ -113,39 +98,8 @@ public class Fraction {
         return denominator;
     }
 
-    public void setNumerator(int numerator) {
-        this.numerator = numerator;
-    }
-
-    public void setDenominator(int denominator) {
-        this.denominator = denominator;
-    }
-
-    public static Fraction valueOf ( String s) {
-        Fraction result = new Fraction();
-        char t = s.charAt(0);
-        String t1 = String.valueOf(t);
-        char h = s.charAt(2);
-        String h1 = String.valueOf(h);
-        result.numerator = Integer.parseInt(t1);
-        result.denominator = Integer.parseInt(h1);
-        return result;
-    }
-
-    private static int gcd (int a, int b) {
-        if (a == b) {
-            return b;
-        }
-        while (b!=0) {
-            if (a>b) {
-                a -= b;
-            }
-            else {
-                b-=a;
-            }
-        }
-        return a;
-
+    private static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 }
 
