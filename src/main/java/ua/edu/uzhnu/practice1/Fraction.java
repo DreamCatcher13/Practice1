@@ -53,13 +53,9 @@ public class Fraction {
         return inv;
     }
 
-
     public Fraction simplify() {
-        Fraction simplified = new Fraction();
-        int n = gcd(numerator, denominator);
-        simplified.numerator = numerator / n;
-        simplified.denominator = denominator / n;
-        return simplified;
+        int gcd = gcd(numerator, denominator);
+        return new Fraction(numerator / gcd, denominator / gcd);
     }
 
     public static Fraction add (Fraction a, Fraction b) {
