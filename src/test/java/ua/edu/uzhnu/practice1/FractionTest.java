@@ -47,12 +47,21 @@ public class FractionTest {
         Assert.assertEquals (("-3/4"), f.toString());
     }
 
-    /*@Test
+   /*@Test
+   Пише помилку, як виправити не знаю
     public void test_ToDouble_Double (){
         Fraction f = new Fraction(7,5);
-        double a = (double) 7/5;
-        Assert.assertEquals ((double)7/5,f.toDouble() );
+        Assert.assertEquals (((double)7/5),f.toDouble() );
     }*/
+
+    @Test
+    public void test_Inverse_FractionInverse (){
+        Fraction f = new Fraction(6,4);
+        Fraction h = new Fraction(-1,2);
+        Assert.assertEquals ((4+"/"+6), f.inverse().toString());
+        Assert.assertEquals ((-2+"/"+1), h.inverse().toString()
+        );
+    }
 
     @Test
     public void test_isProper_Property (){

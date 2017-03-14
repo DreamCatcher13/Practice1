@@ -48,9 +48,14 @@ public class Fraction {
 
     public Fraction inverse() {
         Fraction inv = new Fraction();
-        inv.numerator = denominator;
-        inv.denominator = numerator;
-        return inv;
+        if (numerator>0 && denominator>0) {
+            inv.numerator = denominator;
+            inv.denominator = numerator;
+        } else if (numerator<0 && denominator>0){
+            inv.numerator = - denominator;
+            inv.denominator = - numerator;
+        }
+            return inv;
     }
 
     public Fraction simplify() {
