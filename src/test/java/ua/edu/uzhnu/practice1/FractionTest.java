@@ -15,7 +15,7 @@ public class FractionTest {
 
     @Test
     public void test_Constructor2Parameters_Fraction2Parameters (){
-        Assert.assertEquals ((2+"/"+3), new Fraction(2,3).toString());
+        Assert.assertEquals(2+"/"+3, new Fraction(2,3).toString());
     }
 
 
@@ -47,12 +47,11 @@ public class FractionTest {
         Assert.assertEquals (("-3/4"), f.toString());
     }
 
-   /*@Test
-   Пише помилку, як виправити не знаю
+   @Test
     public void test_ToDouble_Double (){
         Fraction f = new Fraction(7,5);
-        Assert.assertEquals (((double)7/5),f.toDouble() );
-    }*/
+        Assert.assertEquals (((double)7/5),f.toDouble(), 0.0001 );
+    }
 
     @Test
     public void test_Inverse_FractionInverse (){

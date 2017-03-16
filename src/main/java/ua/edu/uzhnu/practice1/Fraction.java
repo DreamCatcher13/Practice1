@@ -37,7 +37,7 @@ public class Fraction {
         return ( numerator + "/" + denominator);
     }
 
-    public Double toDouble() {
+    public double toDouble() {
         return ( ( double ) numerator / denominator);
     }
 
